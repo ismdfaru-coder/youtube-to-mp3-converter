@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>YouTube to MP3 Converter</h1>
+    <form id="converter-form">
+        <label for="youtube-url">YouTube Video URL:</label>
+        <input type="url" id="youtube-url" name="youtube-url" required>
+        <button type="submit">Convert to MP3</button>
+    </form>
+    <div id="progress-container" style="display:none;">
+        <p>Conversion in progress...</p>
+        <progress id="progress-bar" value="0" max="100"></progress>
+    </div>
+    <div id="download-link" style="display:none;">
+        <p>Your MP3 file is ready:</p>
+        <a id="download-button" href="#" download>Download MP3</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('converter-form');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const downloadLink = document.getElementById('download-link');
+        const downloadButton = document.getElementById('download-button');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const url = document.getElementById('youtube-url').value;
+            progressContainer.style.display = 'block';
+
+            // Simulating download progress
+            for (let i = 0; i <= 100; i++) {
+                progressBar.value = i;
+                await new Promise(resolve => setTimeout(resolve, 50)); // Simulate time delay
+            }
+
+            // After conversion is complete
+            const downloadUrl = 'example.mp3'; // Replace with actual MP3 file URL
+            downloadButton.href = downloadUrl;
+            downloadLink.style.display = 'block';
+        };
+    </script>
+</body>
+</html>
