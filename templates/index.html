@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube to MP3 Converter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>YouTube to MP3 Converter</h1>
-    <form id="converter-form">
-        <label for="youtube-url">YouTube Video URL:</label>
-        <input type="url" id="youtube-url" name="youtube-url" required>
-        <button type="submit">Convert to MP3</button>
-    </form>
-    <div id="progress-container" style="display:none;">
-        <p>Conversion in progress...</p>
-        <progress id="progress-bar" value="0" max="100"></progress>
-    </div>
-    <div id="download-link" style="display:none;">
-        <p>Your MP3 file is ready:</p>
-        <a id="download-button" href="#" download>Download MP3</a>
-    </div>
+    <header>
+        <h1>YouTube to MP3 Converter</h1>
+        <p>Convert your favorite YouTube videos to MP3 format quickly and easily.</p>
+        <a href="#converter" class="btn">Get Started</a>
+    </header>
 
-    <script>
-        const form = document.getElementById('converter-form');
-        const progressContainer = document.getElementById('progress-container');
-        const progressBar = document.getElementById('progress-bar');
-        const downloadLink = document.getElementById('download-link');
-        const downloadButton = document.getElementById('download-button');
+    <section id="converter">
+        <h2>Convert Your Videos</h2>
+        <input type="text" placeholder="Enter YouTube URL" id="urlInput">
+        <button id="convertButton">Convert</button>
+        <div id="progressTracker" style="display: none;">
+            <p>Conversion in progress...</p>
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+    </section>
 
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const url = document.getElementById('youtube-url').value;
-            progressContainer.style.display = 'block';
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>High-Quality MP3 Output</li>
+            <li>Fast Conversion Speeds</li>
+            <li>Saves to Your Device Instantly</li>
+        </ul>
+    </section>
 
-            // Simulating download progress
-            for (let i = 0; i <= 100; i++) {
-                progressBar.value = i;
-                await new Promise(resolve => setTimeout(resolve, 50)); // Simulate time delay
-            }
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>How do I use this converter?</h3>
+            <p>Simply paste the YouTube URL into the input box and click the convert button.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is this service free?</h3>
+            <p>Yes, our YouTube to MP3 converter is completely free to use!</p>
+        </div>
+    </section>
 
-            // After conversion is complete
-            const downloadUrl = 'example.mp3'; // Replace with actual MP3 file URL
-            downloadButton.href = downloadUrl;
-            downloadLink.style.display = 'block';
-        };
-    </script>
+    <footer>
+        <p>&copy; 2026 YouTube to MP3 Converter. All rights reserved.</p>
+        <p>Contact: support@youtube-to-mp3.com</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
